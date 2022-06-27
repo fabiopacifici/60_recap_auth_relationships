@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/admin/comics', 'ComicController');
-
-
 Route::get('/', function () {
     $data = [
         'name' => 'DC Comics',
@@ -83,4 +80,13 @@ Auth::routes();
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('comics', 'ComicController');
 });
+
+
+/*
+Comic->Serie (one to many)
+- define relationship inside both models
+- define foreing key in comics table
+
+*/

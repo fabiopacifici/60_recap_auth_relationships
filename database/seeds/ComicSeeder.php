@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Comic;
+use App\Models\Comic;
 class ComicSeeder extends Seeder
 {
     /**
@@ -11,7 +11,7 @@ class ComicSeeder extends Seeder
      */
     public function run()
     {
-        
+
         $comics = config('db.comics');
 
         foreach ($comics as $comic) {
