@@ -6,7 +6,8 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Serie;
-
+use App\Models\Writer;
+use Carbon\Carbon;
 class ComicController extends Controller
 {
     /**
@@ -29,7 +30,8 @@ class ComicController extends Controller
     public function create()
     {
         $series = Serie::all();
-        return view('admin.comics.create', compact('series'));
+        $writers = Writer::all();
+        return view('admin.comics.create', compact('series', 'writers'));
     }
 
     /**
@@ -41,7 +43,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         // Visualizza la richiesta
-        //dd($request->all());
+       //dd($request->all());
 
         // Validare i dati inseriti dall'utente
         $val_data = $request->validate([
@@ -52,11 +54,12 @@ class ComicController extends Controller
             'serie_id' => 'nullable|exists:series,id',
             'sale_date' => 'nullable|date',
             'type' => 'nullable|max:50',
+            'writers' => 'nullable|exists:writers,id'
         ]);
         // Salviamo i dati nel db
         //$data = $request->all();
-        Comic::create($val_data);
-
+        $comic = Comic::create($val_data);
+        $comic->writers()->attach($request->writers);
         return redirect()->route('admin.comics.index')->with('message', 'Comic Creted');
     }
 
@@ -68,6 +71,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
+
         return view('admin.comics.show', compact('comic'));
     }
 
@@ -100,10 +104,12 @@ class ComicController extends Controller
             'serie_id' => 'nullable|exists:series,id',
             'sale_date' => 'nullable|date',
             'type' => 'nullable|max:50',
+            'writers' => 'nullable|exists:writers,id'
         ]);
         // Salviamo i dati nel db
         //$data = $request->all();
         $comic->update($val_data);
+        $comic->writers()->sync($request->writers);
 
         return redirect()->route('admin.comics.index')->with('message', 'Comic Updated');
     }

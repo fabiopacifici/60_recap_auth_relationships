@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Comic extends Model
 {
@@ -19,5 +20,16 @@ class Comic extends Model
     public function serie(): BelongsTo
     {
         return $this->belongsTo(Serie::class);
+    }
+
+
+    /**
+     * The writers that belong to the Comic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function writers(): BelongsToMany
+    {
+        return $this->belongsToMany(Writer::class);
     }
 }

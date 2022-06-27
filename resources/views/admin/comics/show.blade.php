@@ -35,6 +35,16 @@
         <div class="container">
             <div class="row">
 
+                <div class="col">
+                    <h2>Writers</h2>
+                    @if (count($comic->writers) > 0)
+                    <ul>
+                        @foreach ($comic->writers as $writer)
+                        <li>{{$writer->fullname}}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
 
                 <div class="col">
                     <h2>Spect</h2>

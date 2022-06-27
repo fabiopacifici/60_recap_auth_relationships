@@ -39,6 +39,19 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="writers" class="form-label">Series</label>
+            <select class="form-control" name="writers[]" id="writers" multiple>
+                <option>Select a Serie</option>
+
+                @forelse ($writers as $writer)
+                <option value="{{$writer->id}}" {{old('writer_id') == $writer->id ? 'selected' : ''}}>{{$writer->fullname}}</option>
+                @empty
+                <option>No writers defined!</option>
+                @endforelse
+
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="sale_date" class="form-label">sale_date</label>
             <input type="date" name="sale_date" id="sale_date" class="form-control" aria-describedby="sale_dateHelper">
             <small id="sale_dateHelper" class="text-muted">Add the comic thumb here</small>
