@@ -1,0 +1,78 @@
+@use 'bootstrap';
+$dc-primary: #0282F9;
+$dc-banner-bg: #1C1C1C;
+$dc-footer-bg: #303030;
+$dc-text-dark: #464646;
+$dc-text-white: #FFFFF2;
+$dc-text-grey: #797777;
+
+
+
+/* Header */
+
+#site_header {
+    a.active {
+        color: $dc-primary;
+        border-bottom: 4px solid $dc-primary;
+
+    }
+}
+
+/* MAIN */
+
+.single-comic {
+    .hero_image {
+        position: relative;
+        box-shadow: inset 0px -60px $dc-primary;
+        .thumb {
+            position: absolute;
+            bottom: 1rem;
+            
+        }
+    }
+}
+
+main {
+    .hero_image {
+        height: 500px;
+        background-image: url('../img/jumbotron.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+
+    .comics {
+        background-color: $dc-banner-bg;
+
+        h1 {
+            background: $dc-primary;
+            color: $dc-text-white;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-top: -2rem;
+            margin-bottom: 2rem;
+        }
+
+        .comic {
+            text-transform: uppercase;
+            color: white;
+
+            img {
+                height: 200px;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+
+            }
+        }
+    }
+}
+
+
+/* Site Footer */
+#site_footer {
+    height: 400px;
+    background-image: url('../img/footer-bg.jpg');
+    background-size: cover;
+}
