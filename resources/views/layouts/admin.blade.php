@@ -36,6 +36,11 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.comics.index')}}">Comics</a>
+                                <ul class="flex-column ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('admin.series.index')}}">Series </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </nav>

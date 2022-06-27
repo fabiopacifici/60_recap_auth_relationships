@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Serie extends Model
 {
     //
-
+    protected $fillable = ['name', 'slug'];
 
     /**
      * Get all of the comics for the Serie
